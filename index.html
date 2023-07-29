@@ -253,44 +253,82 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-md-6">
-            <div class="mb-3">
-              <input
-                type="name"
-                class="form-control"
-                id="name"
-                placeholder="Your Name"
-              />
-            </div>
-            <div class="mb-3">
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                placeholder="Email"
-              />
-            </div>
-            <div class="mb-3">
-              <input
-                type="subject"
-                class="form-control"
-                id="subject"
-                placeholder="Subject"
-              />
-            </div>
-            <div class="mb-3">
-              <textarea
-                class="form-control"
-                id="message"
-                rows="3"
-                placeholder="Message"
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              class="btn btn-primary"
+            <div
+              class="alert alert-success alert-dismissible fade show d-none"
+              role="alert"
             >
-              Submit
-            </button>
+              <strong>Thank You!</strong> Your message has been successfully
+              sent.
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+              ></button>
+            </div>
+            <form name="porto-contact-form">
+              <div class="mb-3">
+                <input
+                  type="name"
+                  class="form-control"
+                  id="name"
+                  placeholder="Your Name"
+                  name="name"
+                  required
+                  minlength="1"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Email"
+                  name="email"
+                  required
+                  minlength="1"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="subject"
+                  class="form-control"
+                  id="subject"
+                  placeholder="Subject"
+                  name="subject"
+                  required
+                  minlength="1"
+                />
+              </div>
+              <div class="mb-3">
+                <textarea
+                  class="form-control"
+                  id="message"
+                  rows="3"
+                  placeholder="Message"
+                  name="message"
+                  required
+                  minlength="1"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary btn-submit"
+              >
+                Submit
+              </button>
+              <button
+                class="btn btn-primary btn-loading d-none"
+                type="button"
+                disabled
+              >
+                <span
+                  class="spinner-border spinner-border-sm"
+                  aria-hidden="true"
+                ></span>
+                <span role="status">Loading...</span>
+              </button>
+            </form>
           </div>
         </div>
       </div>
@@ -325,5 +363,33 @@
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbxwgbwXTmBuloTX_5bbZpsKG6ZSVD_JdUlVAyAYqGx4RL52ICfBEs28mRM7z2OtVYBb/exec";
+      const form = document.forms["porto-contact-form"];
+      const btnSubmit = document.querySelector(".btn-submit");
+      const btnLoading = document.querySelector(".btn-loading");
+      const myAlert = document.querySelector(".alert");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        // Ketika tombol submit diklik. Hilangkan tombol submit, munculkan tombol loading
+        btnLoading.classList.toggle("d-none");
+        btnSubmit.classList.toggle("d-none");
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            // Tampilkan tombol submit, hilangkan tombol loading
+            btnLoading.classList.toggle("d-none");
+            btnSubmit.classList.toggle("d-none");
+            // Tampilkan alert
+            myAlert.classList.toggle("d-none");
+            // Reset form jika sudah berhasil sukses terkirim
+            form.reset();
+            console.log("Success!", response);
+          })
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
   </body>
 </html>
