@@ -238,17 +238,6 @@ section {
 .timeline-content {
   display: inline-block;
 }
-
-.timeline-content::before {
-  content: '';
-  position: absolute;
-  top: 16px;
-  right: 100%;
-  height: 0;
-  width: 0;
-  border: 10px solid transparent;
-  border-right:10px solid #ebebeb;
-}
  
 .timeline-content .percent {
   font-size: 2.5rem;
