@@ -11,6 +11,21 @@
   background-color: #e2edff;
 }
 
+/* Achievements */
+#image-achivement img {
+  filter: grayscale(100%);
+  transition: .5s ease;
+  cursor: pointer;
+}
+
+#image-achivement img:hover {
+  filter: grayscale(0%);
+}
+
+#gallery-modal .modal-img{
+	width: 100%;
+}
+
 #contact {
   background-color: #e2edff;
 }
