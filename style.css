@@ -6,9 +6,17 @@
 #education {
   background-color: #e2edff;
 }
-
+/* Projects */
 #projects {
   background-color: #e2edff;
+}
+
+.card-text {
+  display: -webkit-box;
+  height: 120px;
+  /* -webkit-line-clamp: 4; */
+  -webkit-box-orient: vertical;
+  overflow-y: scroll;
 }
 
 /* Achievements */

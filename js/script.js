@@ -4,7 +4,6 @@ $(`.nav-link`).on(`click`, function() {
     $(this).addClass(`active`);
 });
 
-
 // Achievement
 $(document).ready(function(){
     $(document).on("click", ".achivement-item", function(){
