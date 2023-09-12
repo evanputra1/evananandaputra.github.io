@@ -1,3 +1,7 @@
+/* * {
+  border: 1px solid red;
+} */
+
 .jumbotron {
   padding-top: 6rem;
   background-color: #e2edff;
@@ -19,6 +23,12 @@
   overflow-y: scroll;
 }
 
+.project-link {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 20px;
+}
+
 /* Achievements */
 #image-achivement img {
   filter: grayscale(100%);
@@ -32,6 +42,12 @@
 
 #gallery-modal .modal-img{
 	width: 100%;
+}
+
+.certification-link {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 20px;
 }
 
 #contact {
